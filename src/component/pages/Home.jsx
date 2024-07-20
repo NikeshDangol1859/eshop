@@ -1,70 +1,42 @@
-import React from 'react'
-import Catagory from '../../data/Catagory';
+import React from 'react';
 import Items from '../../data/Items';
 import { Link } from 'react-router-dom';
+import CategoryPage from './CategoryPage';
+// import './Home.css'; // Assuming you have a CSS file for custom styles
 
 function Home() {
   return (
-    <>    
-    <section>
-    <div className="container">
-                    <h3 className='text-center fs-1 text-secondary bg-body-tertiary'> Our Product</h3>
-                    <div className="row">
-                        <div className="col-md-3">
-                            <div className='categories'>
-                                <div className='bg-dark text-white fs-3 text-center rounded'>CATEGORIES</div>
-                                {Catagory.map((cat)=>
-                                <div className='py-1 px-2'>
-                                    <ul><li>
-                                        <Link to={`/catagory_detail/${cat}`}>{cat}</Link>
-                                        </li></ul>                                       
-                                    </div>
-                                    )
-                                }
-                            
-
-                            </div>
-                        </div>
-                        
-                        {Items.map((item)=>                        
-
-                        <Link to={`/item_detail/${item.id}`} className="col-md-3 d-flex my-3">
-                            <div className="row">
-                            <div className="card" style={{ width: '18rem' }}>
-                            
-                                <div key={item.id}>
-                                    <img src={item.image} className="card-img-top" alt={item.item_name} />
-                                    <div className="card-body">
-                                        <p>Name: {item.item_name}</p>
-                                        <p>Description: {item.description}</p>
-                                        <p>Price: $ {item.price}</p>
-                                        <button type="button" class="btn btn-outline-primary">Buy Now</button>
-                                        <button type="button" class="btn btn-danger m-1">Cancel</button>
-                                    </div>
-                                    
-
-                                </div>
-                                    
-                            </div>
-                            </div>
-                        </Link>
-                        
-                            )
-                            
-
-                        }
-                        
-
-
+    <div className="container my-5">
+      <h3 className="text-center fs-1 text-secondary bg-body-tertiary mb-4">Our Products</h3>
+      <div className="row">
+        <div className="col-md-3">
+          <CategoryPage />
+        </div>
+        <div className="col-md-9">
+          <div className="row">
+            {Items.map((item) => (
+              <div className="col-md-4 col-sm-6 my-4" key={item.id}>
+                <Link to={`/item_detail/${item.id}`} className="text-decoration-none">
+                  <div className="card h-100">
+                    <img src={item.image} className="card-img-top" alt={item.item_name} />
+                    <div className="card-body">
+                      <h5 className="card-title text-dark">{item.item_name}</h5>
+                      <p className="card-text text-dark">{item.description}</p>
+                      <p className="card-text text-primary">$ {item.price}</p>
+                      <div className="d-flex justify-content-between">
+                        <button type="button" className="btn btn-outline-primary">Buy Now</button>
+                        <button type="button" className="btn btn-danger">Cancel</button>
+                      </div>
                     </div>
-                    
-                </div>
-
-
-</section>
-      
-    </>
-  )
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default Home
+export default Home;
