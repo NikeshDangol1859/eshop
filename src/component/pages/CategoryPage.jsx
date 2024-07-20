@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function CategoryPage() {
   return (
     <>
-    <div className="categories-container">
+    <div className="categories-container sticky-md-top">
       <div className="categories-header bg-dark text-white fs-3 text-center rounded py-2">
         CATEGORIES
       </div>
