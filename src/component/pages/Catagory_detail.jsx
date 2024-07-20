@@ -28,7 +28,7 @@ function CategoryDetail() {
                     <div className="card-body">
                       <h5 className="card-title text-dark">{item.item_name}</h5>
                       <p className="card-text text-dark">{item.description}</p>
-                      <p className="card-text text-primary">$ {item.price}</p>
+                      <p className="card-text text-primary">Rs. {item.price}</p>
                       <div className="d-flex justify-content-between">
                         <button type="button" className="btn btn-outline-primary">Buy Now</button>
                         <button type="button" className="btn btn-danger">Cancel</button>
