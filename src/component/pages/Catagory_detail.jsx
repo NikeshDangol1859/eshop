@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Items from '../../data/Items';
 import CategoryPage from './CategoryPage';
 
@@ -23,6 +23,7 @@ function CategoryDetail() {
             <div className="row">
               {categoryData.map((item) => (
                 <div className="col-md-4 col-sm-6 my-3" key={item.id}>
+                  <Link to={`/item_detail/${item.id}`}>
                   <div className="card h-100">
                     <img src={item.image} className="card-img-top" alt={item.item_name} />
                     <div className="card-body">
@@ -35,6 +36,7 @@ function CategoryDetail() {
                       </div>
                     </div>
                   </div>
+                  </Link>
                 </div>
               ))}
             </div>
